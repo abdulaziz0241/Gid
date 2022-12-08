@@ -17,7 +17,7 @@ export const Login = ({ onFormSwitch }) => {
          if (res.data.access) {
             onFormSwitch('verifyed')
          }
-         console.log(res.data);
+         console.log(res?.data);
       }).catch(e => {
          notify()
       })
