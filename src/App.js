@@ -1,10 +1,9 @@
-import './App.css';
-import Auth from './auth/auth';
+import { Routers } from './routers/routes';
 
 function App() {
   return (
     <>
-      <Auth />
+      <Routers />
     </>
   );
 }

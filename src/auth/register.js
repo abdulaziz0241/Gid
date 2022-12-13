@@ -17,6 +17,10 @@ function Register(props) {
       e.preventDefault()
    }
 
+   async function FetchData() {
+      return await axios.post('https://api.gits.uz/api/auth/registration/', state)
+   }
+
    const handleChange = (e) => {
       setState(prevState => {
          return {
@@ -25,13 +29,8 @@ function Register(props) {
          }
       })
    }
-
-   async function FetchData() {
-      return await axios.post('https://api.gits.uz/api/auth/registration/', state)
-   }
-
    return (
-      <div className='container'>
+      <div className='container contain'>
          <div className="auth-container">
             <div className="btn-wrapper">
                <button onClick={() => props.onFormSwitch('login')} style={{ color: '#666' }}>Kirish</button>
@@ -47,11 +46,11 @@ function Register(props) {
 
                <label>
                   <input onChange={handleChange} placeholder='Foydalanuvchi' list="Foydalanuvchilar" name="role" /></label>
-               <datalist id="Foydalanuvchilar" >
-                  <option value="Foydalanuvchi" />
-                  <option value="Gid" />
-                  <option value="Og'zaki tarjimon" />
-                  <option value="Yozma tarjimon" />
+               <datalist id="foydalanuvchilar" >
+                  <option value="foydalanuvchi" />
+                  <option value="gid" />
+                  <option value="og'zaki tarjimon" />
+                  <option value="yozma tarjimon" />
                </datalist>
 
                <input value={state.username} onChange={(e) => setState({ ...state, username: e.target.value })} type="text" placeholder="E-mail ni kiriting" id="email" name="email" />

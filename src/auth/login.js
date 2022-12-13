@@ -1,11 +1,13 @@
 import React, { useState } from "react"
 import './index.scss'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const Login = ({ onFormSwitch }) => {
+   const navigate = useNavigate()
    const [LoginValue, setLoginValue] = useState({
       username: '',
       password: ''
@@ -15,16 +17,16 @@ export const Login = ({ onFormSwitch }) => {
       e.preventDefault()
       return await axios.post('https://api.gits.uz/api/auth/token/', LoginValue).then(res => {
          if (res.data.access) {
-            onFormSwitch('verifyed')
+            navigate('/main')
          }
-         console.log(res?.data);
+         // console.log(res?.data);
       }).catch(e => {
          notify()
       })
    }
 
    function notify() {
-      toast.error('🦄 Wow so easy!', {
+      toast.error('Login yoki parol xato', {
          position: "bottom-center",
          autoClose: 5000,
          hideProgressBar: false,
@@ -37,7 +39,7 @@ export const Login = ({ onFormSwitch }) => {
    }
 
    return (
-      <div className="container">
+      <div className="container contain">
          <div className="auth-container">
             <div className="btn-wrapper">
                <button className="enter-btn" style={{ borderBottom: "2px solid #326A32" }} disabled>Kirish</button>
