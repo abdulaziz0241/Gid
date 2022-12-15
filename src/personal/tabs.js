@@ -3,6 +3,7 @@ import Applications from "./applications/applications"
 import Datas from "./datas/datas"
 import Settings from "./settings/settings"
 import Verifyed from "./verifyed"
+import Layout from '../layout/index'
 
 
 function Tabs() {
@@ -14,6 +15,7 @@ function Tabs() {
 
    return (
       <>
+         {/* <Layout /> */}
          {
             currentTab === "verify" ? <Verifyed onTabSwitch={toggleTab} />
                : currentTab === 'applications' ? <Applications onTabSwitch={toggleTab} />

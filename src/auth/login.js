@@ -19,7 +19,6 @@ export const Login = ({ onFormSwitch }) => {
          if (res.data.access) {
             navigate('/main')
          }
-         // console.log(res?.data);
       }).catch(e => {
          notify()
       })

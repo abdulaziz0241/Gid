@@ -10,37 +10,46 @@ const Select = lazy(() => import("../pages/select"))
 const Footer = lazy(() => import("../footer/footer"))
 
 
+
 export const routers = createBrowserRouter([
    {
-      path: '/',
-      element: <Auth />
+      element: <Layout />,
+      children: [
+         {
+            path: '/',
+            element: <Auth />
+         },
+         {
+            path: '/main',
+            element: <Tabs />
+         },
+         {
+            path: '/layout',
+            element: <Layout />
+         },
+         {
+            path: '/blog',
+            element: <Blog />
+         },
+         {
+            path: '/application',
+            element: <Application />
+         },
+         {
+            path: '/transport',
+            element: <Transport />
+         },
+         {
+            path: '/select',
+            element: <Select />
+         },
+         {
+            path: '/footer',
+            element: <Footer />
+         }
+      ]
    },
-   {
-      path: '/main',
-      element: <Tabs />
-   },
-   {
-      path: '/layout',
-      element: <Layout />
-   },
-   {
-      path: '/blog',
-      element: <Blog />
-   },
-   {
-      path: '/application',
-      element: <Application />
-   },
-   {
-      path: '/transport',
-      element: <Transport />
-   },
-   {
-      path: '/select',
-      element: <Select />
-   },
-   {
-      path: '/footer',
-      element: <Footer />
-   }
+
 ])
+
+
