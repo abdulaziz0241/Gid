@@ -67,3 +67,15 @@ footer {
       background-color: rgb(29, 61, 29);
    }
 }
+
+@media (max-width: 650px) {
+   .footer-container {
+      ul {
+         text-align: center;
+
+         &:nth-child(even) {
+            margin: 30px auto;
+         }
+      }
+   }
+}

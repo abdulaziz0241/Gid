@@ -52,13 +52,11 @@ function Footer() {
                   <img src={Instagram} alt="telegram" />
                </div>
                <div className="footer-bottom">
-                  All rights reserved. Created by the   QWERTY AL-FAJR  Compniy  | Tashkent,Uzbekistan.
+                  All rights reserved. Created by Keldiboyev Abdulaziz | Tashkent,Uzbekistan.
                </div>
             </footer>)
          }
-
       </>
-
    )
 }
 

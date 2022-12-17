@@ -1,0 +1,107 @@
+main {
+  width: 100%;
+}
+main .tab-container {
+  width: 100%;
+  padding: 0 10%;
+  background-color: #F9F9F9;
+  display: flex;
+  justify-content: center;
+}
+main .tab-container button {
+  width: 270px;
+  height: 60px;
+  font-size: 16px;
+  border: none;
+  color: #646464;
+  outline: none;
+  font-family: "Montserrat";
+  cursor: pointer;
+  background-color: #F9F9F9;
+}
+main .profile-container {
+  width: 88%;
+  margin-top: 80px;
+  margin-bottom: 280px;
+  padding: 30px 20px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 8px 0px;
+  display: flex;
+}
+main .profile-container .person-img {
+  width: 130px;
+  height: 130px;
+}
+main .profile-container .person-body {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+main .profile-container .person-body .person-title {
+  font-size: 34px;
+  font-weight: 700;
+  color: black;
+}
+main .profile-container .person-body .person-icons {
+  display: flex;
+  align-items: center;
+}
+main .profile-container .person-body .person-icons .location {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+main .profile-container .person-body .person-icons .location span {
+  color: black;
+}
+main .profile-container .person-body .person-icons .location img {
+  width: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-right: 5px;
+}
+main .profile-container .person-body .person-icons .data-icon {
+  display: flex;
+  align-items: center;
+}
+main .profile-container .person-body .person-icons .data-icon span {
+  color: black;
+}
+main .profile-container .person-body .person-icons .data-icon img {
+  width: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-right: 5px;
+}
+
+.tabs-box {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  background-color: #F9F9F9;
+}
+.tabs-box .tabs-container {
+  width: 80%;
+  margin: 0 auto;
+}
+.tabs-box .tabs-container .tabs-wrapper {
+  width: 100% !important;
+}
+.tabs-box .tabs-container .tabs-wrapper button {
+  width: 25%;
+  min-width: 180px;
+  height: 60px;
+  font-size: 16px;
+  border: none;
+  color: #646464;
+  outline: none;
+  font-family: "Montserrat";
+  cursor: pointer;
+}
+
+@media (max-width: 1025px) {
+  .tabs-wrapper button {
+    font-size: 14px !important;
+  }
+}/*# sourceMappingURL=verify.css.map */

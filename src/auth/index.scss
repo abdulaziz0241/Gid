@@ -147,3 +147,42 @@
       font-size: 18px;
    }
 }
+
+@media (max-width: 640px) {
+   .contain {
+      padding: 0 10px;
+   }
+
+   .about-wrapper {
+      flex-direction: column;
+
+      input {
+         width: 100% !important;
+      }
+   }
+
+   .btn-wrapper {
+      button {
+         font-size: 17px !important;
+      }
+   }
+
+   .register-btn,
+   .kirish-btn {
+      margin-right: auto !important;
+   }
+
+   .input-form {
+      input {
+         width: 95% !important;
+      }
+   }
+
+   .e-inp {
+      width: 95% !important;
+   }
+
+   .about-wrapper {
+      width: 100% !important;
+   }
+}

@@ -1,8 +1,11 @@
 main {
    width: 100%;
 
+
+
    .tab-container {
       width: 100%;
+      padding: 0 10%;
       background-color: #F9F9F9;
       display: flex;
       justify-content: center;
@@ -80,6 +83,78 @@ main {
                }
             }
          }
+      }
+   }
+}
+
+@media (max-width: 690px) {
+   .profile-container {
+      flex-direction: column;
+      text-align: center;
+      margin-bottom: 100px !important;
+      padding-bottom: 20px !important;
+
+      .person-img {
+         margin-left: auto;
+         margin-right: auto;
+         width: 220px !important;
+         height: 220px !important;
+      }
+
+      .person-title {
+         font-size: 28px !important;
+         margin-bottom: 10px;
+      }
+
+      .person-icons {
+         margin-left: auto;
+         margin-right: auto;
+      }
+   }
+}
+
+@media (max-width: 690px) {
+   .person-icons {
+      flex-direction: column;
+      gap: 10px 0;
+   }
+}
+
+
+.tabs-box {
+   width: 100%;
+   margin: 0 auto;
+   display: flex;
+   justify-content: center;
+   background-color: #F9F9F9;
+
+   .tabs-container {
+      width: 80%;
+      margin: 0 auto;
+
+      .tabs-wrapper {
+         width: 100% !important;
+
+
+         button {
+            width: 25%;
+            min-width: 180px;
+            height: 60px;
+            font-size: 16px;
+            border: none;
+            color: #646464;
+            outline: none;
+            font-family: 'Montserrat';
+            cursor: pointer;
+         }
+      }
+   }
+}
+
+@media(max-width: 1025px) {
+   .tabs-wrapper {
+      button {
+         font-size: 14px !important;
       }
    }
 }

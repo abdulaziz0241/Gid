@@ -15,7 +15,6 @@ function Tabs() {
 
    return (
       <>
-         {/* <Layout /> */}
          {
             currentTab === "verify" ? <Verifyed onTabSwitch={toggleTab} />
                : currentTab === 'applications' ? <Applications onTabSwitch={toggleTab} />

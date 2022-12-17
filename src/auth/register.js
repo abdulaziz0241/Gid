@@ -36,7 +36,7 @@ function Register(props) {
                <button onClick={() => props.onFormSwitch('login')} style={{ color: '#666' }}>Kirish</button>
                <button style={{ borderBottom: "2px solid #326A32" }} disabled>Registratsiya qilish</button>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form className='input-form' onSubmit={handleSubmit}>
                <div className="about-wrapper">
                   <input
                      value={state.first_name}
