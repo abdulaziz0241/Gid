@@ -17,6 +17,7 @@ export const Login = ({ onFormSwitch }) => {
       e.preventDefault()
       return await axios.post('https://api.gits.uz/api/auth/token/', LoginValue).then(res => {
          if (res.data.access) {
+            localStorage.setItem('token', res.data.access)
             navigate('/main')
          }
       }).catch(e => {

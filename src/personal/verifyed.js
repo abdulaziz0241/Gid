@@ -1,22 +1,72 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../App.scss";
 import "./verify.scss";
-import personImg from '.././assets/images/person.png'
-import locationImg from '.././assets/images/location.svg'
-import dataImg from '.././assets/images/data.svg'
+import personImg from 'assets/images/person.png'
+import locationImg from 'assets/images/location.svg'
+import dataImg from 'assets/images/data.svg'
+import axios from 'axios'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { InputComponent } from "components/input";
 
 
 
 function Verifyed({ onTabSwitch }) {
    const [value, setValue] = React.useState(0);
+   const [info, setInfo] = useState({
+      name: '',
+      surname: '',
+      middlename: '',
+      phone_number: ''
+   })
+   const [personalInfo, setPersonalInfo] = useState(undefined)
 
    const handleChange = (event, newValue) => {
       setValue(newValue);
    };
 
+
+   // const handleInput = (e) => {
+   //    setInfo(prevState => {
+   //       return {
+   //          ...prevState,
+   //          [e.target.name]: e.target.value
+   //       }
+   //    })
+   // }
+
+   async function fetchUserData() {
+      return await axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/edit/`, {
+         headers: {
+            "Content-type": "application/json",
+            Authorization: 'Bearer' + ' ' + localStorage.getItem('token')
+         }
+
+      }).then((res) => {
+         // console.log(res?.data, 'res');
+         setPersonalInfo(res?.data)
+      }).catch(error => {
+         toast(error?.message, {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+         })
+      })
+   }
+
+   useEffect(() => {
+      fetchUserData()
+   }, [])
+
+   const { name, surname, middlename, phone_number } = info
    return (
       <main className="main-content">
          <div className="tab-container">
@@ -57,23 +107,28 @@ function Verifyed({ onTabSwitch }) {
 
 
          <div className="profile-container container">
-            <img className="person-img" src={personImg} alt="person-img" />
+            <img className="person-img" src={personalInfo?.image} alt="person-img" />
             <div className="person-body">
                <div className="person-title">
-                  Abdulaziz Keldiboyev
+                  {personalInfo?.first_name + ' ' + personalInfo?.last_name}
                </div>
                <div className="person-icons">
                   <div className="location">
                      <img src={locationImg} alt="location" />
-                     <span>undefind, undefind</span>
+                     <span>{personalInfo?.country_name?.uz + ', ' + personalInfo?.city_name?.uz}</span>
                   </div>
                   <div className="data-icon">
                      <img src={dataImg} alt="location" />
-                     <span>no data</span>
+                     <span>{personalInfo?.company}</span>
                   </div>
                </div>
             </div>
          </div>
+         {/* <InputComponent name='name' value={name} onChange={handleInput} />
+         <InputComponent name='surname' value={surname} onChange={handleInput} />
+         <InputComponent name='middlename' value={middlename} onChange={handleInput} />
+         <InputComponent name='phone_number' value={phone_number} onChange={handleInput} /> */}
+         <ToastContainer />
       </main >
    );
 }

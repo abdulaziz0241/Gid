@@ -65,10 +65,10 @@ function Navbar() {
 
                <div className="navbarrr">
                   <input id="toggle" type="checkbox"></input>
-                  <label for="toggle" class="hamburger">
-                     <div class="top-bun"></div>
-                     <div class="meat"></div>
-                     <div class="bottom-bun"></div>
+                  <label htmlFor="toggle" className="hamburger">
+                     <div className="top-bun"></div>
+                     <div className="meat"></div>
+                     <div className="bottom-bun"></div>
                   </label>
 
                   <div className="nav">

@@ -5,23 +5,20 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { AiOutlineSearch } from 'react-icons/ai'
 import notFoundImg from '../../assets/images/data-not-found.svg'
+import './application.scss'
+import '../../App.scss'
+import { countries } from 'constants/countries';
+
 
 function Applications({ onTabSwitch }) {
    const country = [
-      { label: '' },
-      { label: 'Ozarbayjon' },
-      { label: 'Armaniston' },
-      { label: 'Belorussiya' },
-      { label: 'Gruziya' },
-      { label: 'Qozog`iston' },
-      { label: 'Qirg`iziston' },
-      { label: 'Rosiya' },
-      { label: 'Tojikiston' },
-      { label: 'Turkmaniston' },
-      { label: 'Ukraina' },
+      { label: 'O`zbekiston' }
    ];
    const onChange = (value) => {
       console.log(`${value}`);
+      if (value) {
+         console.log('ok');
+      }
    };
    const onSearch = (value) => {
       console.log('search:', value);
@@ -39,142 +36,121 @@ function Applications({ onTabSwitch }) {
             <button onClick={() => onTabSwitch('data')}>Ma'lumotlarni tahrirlash</button>
             <button onClick={() => onTabSwitch('settings')}>Profil sozlamalari</button>
          </div>
-         <div className="body-container">
+         <div className="body-container container">
             <div className="input-wrapper">
-               <Select
-                  showSearch
-                  placeholder="Davlatni tanlang"
-                  optionFilterProp="children"
-                  onChange={onChange}
-                  onSearch={onSearch}
-                  filterOption={(input, option) =>
-                     (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                  }
-                  options={[
-                     {
-                        value: 'O`zbekiston',
-                        label: 'O`zbekiston',
-                     },
-                     {
-                        value: 'Armaniston',
-                        label: 'Armaniston',
-                     },
-                     {
-                        value: 'Belorussiya',
-                        label: 'Belorussiya',
-                     },
-                     {
-                        value: 'Gruziya',
-                        label: 'Gruziya',
-                     },
-                     {
-                        value: 'Qozog`iston',
-                        label: 'Qozog`iston',
-                     },
-                     {
-                        value: 'Qirg`iziston',
-                        label: 'Qirg`iziston',
-                     },
-                     {
-                        value: 'Rosiya',
-                        label: 'Rosiya',
-                     },
-                     {
-                        value: 'Tojikiston',
-                        label: 'Tojikiston',
-                     },
-                     {
-                        value: 'Turkmaniston',
-                        label: 'Turkmaniston',
-                     },
-                     {
-                        value: 'Ukraina',
-                        label: 'Ukraina',
-                     },
-                  ]}
-               />
+               <div className="select-wrapper">
+                  <div className="single-select">
+                     <Select
+                        showSearch
+                        placeholder="Davlatni tanlang"
+                        optionFilterProp="children"
+                        onChange={onChange}
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                           (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                        }
+                        options={countries}
+                     />
+                  </div>
 
-               <Select
-                  showSearch
-                  placeholder="Shaharni tanlang"
-                  optionFilterProp="children"
-                  onChange={onChange}
-                  onSearch={onSearch}
-                  filterOption={(input, option) =>
-                     (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                  }
-                  options={[
-                     {
-                        value: 'Toshkent',
-                        label: 'Toshkent',
-                     },
-                     {
-                        value: 'Farg`ona',
-                        label: 'Farg`ona',
-                     },
-                     {
-                        value: 'Andijon',
-                        label: 'Andijon',
-                     },
-                     {
-                        value: 'Buxoro',
-                        label: 'Buxoro',
-                     },
-                     {
-                        value: 'Jizzax',
-                        label: 'Jizzax',
-                     },
-                     {
-                        value: 'Qashqadaryo',
-                        label: 'Qashqadaryo',
-                     },
-                     {
-                        value: 'Navoiy',
-                        label: 'Navoiy',
-                     },
-                     {
-                        value: 'Namangan',
-                        label: 'Namangan',
-                     },
-                     {
-                        value: 'Samarqand',
-                        label: 'Samarqand',
-                     },
-                     {
-                        value: 'Surxondaryo',
-                        label: 'Surxondaryo',
-                     },
-                     {
-                        value: 'Sirdaryo',
-                        label: 'Sirdaryo',
-                     },
-                     {
-                        value: 'Shahrisabz',
-                        label: 'Shahrisabz',
-                     },
-                     {
-                        value: 'Toshkent viloyati',
-                        label: 'Toshkent viloyati',
-                     },
-                     {
-                        value: 'Xorazm',
-                        label: 'Xorazm',
-                     },
-                     {
-                        value: 'Qoraqalpog`iston Respublikasi',
-                        label: 'Qoraqalpog`iston Respublikasi',
-                     },
-                  ]}
-               />
+                  <div className="single-select">
+                     <Select
+                        showSearch
+                        placeholder="Shaharni tanlang"
+                        optionFilterProp="children"
+                        onChange={onChange}
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                           (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                        }
+                        options={[
+                           {
+                              value: 'Toshkent',
+                              label: 'Toshkent',
+                           },
+                           {
+                              value: 'Farg`ona',
+                              label: 'Farg`ona',
+                           },
+                           {
+                              value: 'Andijon',
+                              label: 'Andijon',
+                           },
+                           {
+                              value: 'Buxoro',
+                              label: 'Buxoro',
+                           },
+                           {
+                              value: 'Jizzax',
+                              label: 'Jizzax',
+                           },
+                           {
+                              value: 'Qashqadaryo',
+                              label: 'Qashqadaryo',
+                           },
+                           {
+                              value: 'Navoiy',
+                              label: 'Navoiy',
+                           },
+                           {
+                              value: 'Namangan',
+                              label: 'Namangan',
+                           },
+                           {
+                              value: 'Samarqand',
+                              label: 'Samarqand',
+                           },
+                           {
+                              value: 'Surxondaryo',
+                              label: 'Surxondaryo',
+                           },
+                           {
+                              value: 'Sirdaryo',
+                              label: 'Sirdaryo',
+                           },
+                           {
+                              value: 'Shahrisabz',
+                              label: 'Shahrisabz',
+                           },
+                           {
+                              value: 'Toshkent viloyati',
+                              label: 'Toshkent viloyati',
+                           },
+                           {
+                              value: 'Xorazm',
+                              label: 'Xorazm',
+                           },
+                           {
+                              value: 'Qoraqalpog`iston Respublikasi',
+                              label: 'Qoraqalpog`iston Respublikasi',
+                           },
+                        ]}
+                     />
+                  </div>
+               </div>
 
-               <Space direction="vertical" size={12}>
-                  <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])} format={dateFormatList} />
-                  <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])} format={dateFormatList} />
-               </Space>
+               <div className="just-wrap">
 
-               <button><AiOutlineSearch /> Qidiruv</button>
+                  <div className="space-wrapper">
+                     <Space direction="vertical" size={12}>
+                        <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])} format={dateFormatList} />
+                     </Space>
+                  </div>
+                  <div className="space-wrapper2">
+                     <Space direction="vertical" size={12}>
+                        <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])} format={dateFormatList} />
+                     </Space>
+                  </div>
 
-               {/* <img src={notFoundImg} alt="img" /> */}
+                  <div className="button-wrapper">
+                     <button ><AiOutlineSearch /> Qidiruv</button>
+                  </div>
+               </div>
+
+            </div>
+            <div className="not-found-wrapper">
+               <img src={notFoundImg} alt="img" />
+               <span>M'alumot topilmadi</span>
             </div>
          </div>
       </main >
