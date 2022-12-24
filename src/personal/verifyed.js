@@ -46,7 +46,6 @@ function Verifyed({ onTabSwitch }) {
          }
 
       }).then((res) => {
-         // console.log(res?.data, 'res');
          setPersonalInfo(res?.data)
       }).catch(error => {
          toast(error?.message, {
