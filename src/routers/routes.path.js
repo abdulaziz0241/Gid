@@ -1,3 +1,4 @@
+import MainPage from "pages/main-page/main";
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../layout";
@@ -46,6 +47,10 @@ export const routers = createBrowserRouter([
          {
             path: '/footer',
             element: <Footer />
+         },
+         {
+            path: '/master',
+            element: <MainPage />
          }
       ]
    },
