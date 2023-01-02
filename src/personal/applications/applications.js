@@ -7,22 +7,47 @@ import { AiOutlineSearch } from 'react-icons/ai'
 import notFoundImg from '../../assets/images/data-not-found.svg'
 import './application.scss'
 import '../../App.scss'
-import { countries } from 'constants/countries';
-
+import { countries, cities } from 'constants/countries';
+import axios from 'axios';
 
 function Applications({ onTabSwitch }) {
-   const country = [
-      { label: 'O`zbekiston' }
-   ];
-   const onChange = (value) => {
-      console.log(`${value}`);
-      if (value) {
-         console.log('ok');
-      }
+   const [country, setCountry] = useState('O`zbekiston')
+   const [city, setCity] = useState('')
+   const [dateAfter, setDateAfter] = useState('')
+   const [dateBefore, setDateBefore] = useState('')
+
+   const onCoutry = (value) => {
+      setCountry(value)
    };
+
+   const onCity = (value) => {
+      setCity(value)
+      console.log(cities.indexOf(value));
+   };
+
    const onSearch = (value) => {
       console.log('search:', value);
    };
+
+   const onAfterDate = (value) => {
+      setDateAfter(value.format('YYYY-MM-DD'))
+   }
+
+   const onBeforeDate = (value) => {
+      setDateBefore(value.format('YYYY-MM-DD'))
+   }
+
+   async function fetchData() {
+      return await axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/self/application/?country=1&city=1&date_after=${dateAfter}&date_before=${dateBefore}`, {
+         headers: {
+            "Content-type": "application/json",
+            Authorization: 'Bearer' + ' ' + localStorage.getItem('token')
+         }
+      }).then((res) => {
+         // setPersonalInfo(res?.data)
+         console.log(res?.data);
+      })
+   }
 
    dayjs.extend(customParseFormat);
    const { RangePicker } = DatePicker;
@@ -44,12 +69,13 @@ function Applications({ onTabSwitch }) {
                         showSearch
                         placeholder="Davlatni tanlang"
                         optionFilterProp="children"
-                        onChange={onChange}
+                        onChange={onCoutry}
                         onSearch={onSearch}
                         filterOption={(input, option) =>
                            (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                         }
                         options={countries}
+                     // defaultValue={'o`zbekiston'}
                      />
                   </div>
 
@@ -58,73 +84,12 @@ function Applications({ onTabSwitch }) {
                         showSearch
                         placeholder="Shaharni tanlang"
                         optionFilterProp="children"
-                        onChange={onChange}
+                        onChange={onCity}
                         onSearch={onSearch}
                         filterOption={(input, option) =>
                            (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                         }
-                        options={[
-                           {
-                              value: 'Toshkent',
-                              label: 'Toshkent',
-                           },
-                           {
-                              value: 'Farg`ona',
-                              label: 'Farg`ona',
-                           },
-                           {
-                              value: 'Andijon',
-                              label: 'Andijon',
-                           },
-                           {
-                              value: 'Buxoro',
-                              label: 'Buxoro',
-                           },
-                           {
-                              value: 'Jizzax',
-                              label: 'Jizzax',
-                           },
-                           {
-                              value: 'Qashqadaryo',
-                              label: 'Qashqadaryo',
-                           },
-                           {
-                              value: 'Navoiy',
-                              label: 'Navoiy',
-                           },
-                           {
-                              value: 'Namangan',
-                              label: 'Namangan',
-                           },
-                           {
-                              value: 'Samarqand',
-                              label: 'Samarqand',
-                           },
-                           {
-                              value: 'Surxondaryo',
-                              label: 'Surxondaryo',
-                           },
-                           {
-                              value: 'Sirdaryo',
-                              label: 'Sirdaryo',
-                           },
-                           {
-                              value: 'Shahrisabz',
-                              label: 'Shahrisabz',
-                           },
-                           {
-                              value: 'Toshkent viloyati',
-                              label: 'Toshkent viloyati',
-                           },
-                           {
-                              value: 'Xorazm',
-                              label: 'Xorazm',
-                           },
-                           {
-                              value: 'Qoraqalpog`iston Respublikasi',
-                              label: 'Qoraqalpog`iston Respublikasi',
-                           },
-                        ]}
+                        options={cities}
                      />
                   </div>
                </div>
@@ -133,17 +98,21 @@ function Applications({ onTabSwitch }) {
 
                   <div className="space-wrapper">
                      <Space direction="vertical" size={12}>
-                        <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])} format={dateFormatList} />
+                        <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])}
+                           format={dateFormatList}
+                           onChange={onAfterDate} />
                      </Space>
                   </div>
                   <div className="space-wrapper2">
                      <Space direction="vertical" size={12}>
-                        <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])} format={dateFormatList} />
+                        <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])}
+                           format={dateFormatList}
+                           onChange={onBeforeDate} />
                      </Space>
                   </div>
 
                   <div className="button-wrapper">
-                     <button ><AiOutlineSearch /> Qidiruv</button>
+                     <button onClick={fetchData} ><AiOutlineSearch /> Qidiruv</button>
                   </div>
                </div>
 

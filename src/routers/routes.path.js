@@ -1,7 +1,8 @@
 import MainPage from "pages/main-page/main";
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../layout";
+// import Layout from "../layout";
+const Layout = lazy(() => import("../layout"))
 const Tabs = lazy(() => import("../personal/tabs"))
 const Auth = lazy(() => import("../auth/auth"))
 const Blog = lazy(() => import("../pages/blog"))
